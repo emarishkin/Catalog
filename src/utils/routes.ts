@@ -1,4 +1,5 @@
 export const ROUTES = {
     HOME:'/',
-    CARD:'/card'
+    CARD:'/card',
+    CATEGORY:'/categories/:id'
 }
