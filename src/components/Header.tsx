@@ -2,7 +2,7 @@ import type { FC } from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import '../styles/Header.css';
-import logo from '../public/CASTLE.png'
+import logo from '../public/logo.svg'
 import search from '../public/SEARCH.svg'
 import guest from '../public/GUEST.png'
 import heart from '../public/HEART.png'
@@ -14,7 +14,7 @@ export const Header: FC = () => {
         <header className="header">
           <div className="logo">
             <Link to={ROUTES.HOME}>
-              <img style={{width:80,height:70}} src={logo} alt="logo" />
+              <img style={{width:100,height:70}} src={logo} alt="logo" />
             </Link>
           </div>
 
@@ -34,6 +34,7 @@ export const Header: FC = () => {
                 autoComplete="off"
                 value=''
               />
+    
             </form>
           </div>
           
