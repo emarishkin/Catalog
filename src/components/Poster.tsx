@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { FC } from "react";
 import urus from '../public/URUS.png';
-import '../styles/Poster.css';
+import '../styles/Poster.css'
 
 export const Poster: FC = () => {
   const [isAnimating, setIsAnimating] = useState(false);
