@@ -1,10 +1,19 @@
 import type { FC } from "react";
+import { Poster } from "../components/Poster";
+import { ProductsHome } from "../components/ProductsHome";
 
 export const HomePage:FC = () => {
     return (
-        <div className="card">
-            <h1>Welcome</h1>
-            <p className="text-secondary">Dark theme is active</p>
-        </div>
+        <>
+            <div className="card">
+                <Poster />
+            </div>
+            <div className="card">
+                <ProductsHome />
+            </div>
+
+        </>
+        
+        
     )
 }

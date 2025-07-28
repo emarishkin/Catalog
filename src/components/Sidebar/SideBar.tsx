@@ -1,16 +1,22 @@
 import type { FC } from "react";
 import { NavLink } from "react-router-dom";
 import '/СайтКаталог/Magazin/src/styles/SideBar.css'
+import { CategoryCard } from "../Cards/CategoryCard";
+import { categories } from "../../data";
 
 export const SideBar:FC = () => {
     return (
         <section className="sidebar">
-            <div className="title">categories</div>
+            <div className="title">Категории</div>
             <nav>
                 <ul className="menu">
-                    <li>
-                        <NavLink to={`/categories/${1}`}>Link</NavLink>
-                    </li>
+                    {categories.map(category=>(
+                        <li key={category.id}>
+                            <NavLink to={`/categories/${category.id}`}>
+                                <CategoryCard category={category} />    
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
             </nav>
 
