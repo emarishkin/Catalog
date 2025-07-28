@@ -7,10 +7,14 @@ import {
 import KrishkaImg from '../src/public/PROKLADKA.jpg'
 import Proka from '../src/public/CRISHKA.jpg'
 
+import ZAPCHASTI from '/ZAPCHASTI.jpg'
+import VIXLOP from '/VIXLOP.jpg'
+import PROKA from '/PROKA.jpg'
+
 export const categories: ICardCategory[] = [
-  { id: 1, name: 'Автозапчасти', icon: faCar, image:'../src/public/ZAPCHASTI.jpg'},
-  { id: 2, name: 'Выхлопная система', icon: faFire, image:'../src/public/VIXLOP.jpg'},
-  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears, image:'../src/public/PROKA.jpg'}
+  { id: 1, name: 'Автозапчасти', icon: faCar, image:ZAPCHASTI},
+  { id: 2, name: 'Выхлопная система', icon: faFire, image:VIXLOP},
+  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears, image:PROKA}
 ];
 
 export const popularProducts:IPopularProducts[] = [

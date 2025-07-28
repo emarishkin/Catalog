@@ -13,7 +13,7 @@ export const CategoriesHome:FC<CategoriesHome> = () => {
                 {categories.map(category=>(
                     <NavLink key={category.id} to={`/categories/${category.id}`}>
                         <div key={category.id}>
-                            <img src={category.image} alt='Картинка категории' />
+                            <img src={category.image} alt={category.name} />
                             <h3>{category.name}</h3>
                         </div>
                     </NavLink>
