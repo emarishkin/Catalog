@@ -4,13 +4,13 @@ import {
   faFire ,
   faGears 
 } from '@fortawesome/free-solid-svg-icons';
-import KrishkaImg from '../src/public/ПРОКЛАДКА.jpg'
-import Proka from '../src/public/КРЫШКА.jpg'
+import KrishkaImg from '../src/public/PROKLADKA.jpg'
+import Proka from '../src/public/CRISHKA.jpg'
 
 export const categories: ICardCategory[] = [
-  { id: 1, name: 'Автозапчасти', icon: faCar, image:'../src/public/ЗАПЧАСТИ.jpg'},
-  { id: 2, name: 'Выхлопная система', icon: faFire, image:'../src/public/ВЫХЛОП.jpg'},
-  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears, image:'../src/public/ПРОКА.jpg'}
+  { id: 1, name: 'Автозапчасти', icon: faCar, image:'../src/public/ZAPCHASTI.jpg'},
+  { id: 2, name: 'Выхлопная система', icon: faFire, image:'../src/public/VIXLOP.jpg'},
+  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears, image:'../src/public/PROKA.jpg'}
 ];
 
 export const popularProducts:IPopularProducts[] = [
