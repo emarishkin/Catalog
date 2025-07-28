@@ -94,7 +94,7 @@
   width: 100%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: 0.5s;
+  transition: 1.5s;
 }
 
 .poster-button:hover::after {
@@ -107,6 +107,7 @@
   justify-content: center;
   min-width: 300px;
   position: relative;
+  overflow: visible;
 }
 
 .car-image {
@@ -115,23 +116,44 @@
   max-width: 100%;
   object-fit: contain;
   filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
-  transition: transform 0.5s ease;
   position: relative;
   z-index: 2;
+  transition: 
+    transform 1.5s cubic-bezier(0.5, 0.5, 0.2, 1),
+    opacity 1.2s ease 0.5s;
 }
 
+
+
+@keyframes carVroom {
+  0% { 
+    transform: translateX(0) rotate(0);
+    opacity: 1;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  }
+  70% {
+    opacity: 0.8;
+    filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+  }
+  100% { 
+    transform: translateX(-2000px) rotate(-0deg);
+    opacity: 0;
+    filter: drop-shadow(0 0 0 transparent);
+  }
+}
+
+.car-image.animate {
+  animation: carVroom 4s forwards;
+  animation-timing-function: cubic-bezier(0.16, 0.84, 0.44, 1);
+  pointer-events: none;
+}
+
+/* Удаляем стандартный hover-эффект */
 .car-image:hover {
-  transform: scale(1.05) rotate(-5deg);
+  animation: none;
 }
 
-/* Анимации */
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
-}
-
-/* Мобильная версия */
+/* Медиа-запросы */
 @media (max-width: 992px) {
   .poster {
     padding: 30px;

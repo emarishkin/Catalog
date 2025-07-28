@@ -4,17 +4,19 @@ import {
   faFire ,
   faGears 
 } from '@fortawesome/free-solid-svg-icons';
+import прокладкаImg from '../src/public/ПРОКЛАДКА.jpg'
+import крышкаImg from '../src/public/КРЫШКА.jpg'
 
 export const categories: ICardCategory[] = [
-  { id: 1, name: 'Автозапчасти', icon: faCar},
-  { id: 2, name: 'Выхлопная система', icon: faFire },
-  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears }
+  { id: 1, name: 'Автозапчасти', icon: faCar, image:'../src/public/ЗАПЧАСТИ.jpg'},
+  { id: 2, name: 'Выхлопная система', icon: faFire, image:'../src/public/ВЫХЛОП.jpg'},
+  { id: 3, name: 'Прокладки ресивера и впускного коллектора', icon: faGears, image:'../src/public/ПРОКА.jpg'}
 ];
 
 export const popularProducts:IPopularProducts[] = [
-  {id:1,name:'шланг',price:1000,image:'aaa',category:categories[0].name,rating:2},
-  {id:2,name:'Прокладка',price:1000,image:'aaa',category:categories[1].name,rating:2},
-  {id:3,name:'Моторное',price:1000,image:'aaa',category:categories[2].name,rating:2},
-  {id:4,name:'Зимние',price:1000,image:'aaa',category:categories[1].name,rating:2},
-  {id:5,name:'шланг',price:1000,image:'aaa',category:categories[0].name,rating:2}
+  {id:1,name:'шланг',price:12000,image:прокладкаImg,category:categories[0].name,rating:5},
+  {id:2,name:'Прокладка',price:5000,image:крышкаImg,category:categories[1].name,rating:4.1},
+  {id:3,name:'Моторное',price:7100,image:прокладкаImg,category:categories[2].name,rating:2.7},
+  {id:4,name:'Зимние',price:1999,image:крышкаImg,category:categories[1].name,rating:3.5},
+  {id:5,name:'шланг',price:1000,image:прокладкаImg,category:categories[0].name,rating:2}
 ]

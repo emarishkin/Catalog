@@ -4,6 +4,7 @@ export interface ICardCategory {
     id: number;
     name: string;
     icon: IconDefinition; 
+    image:string
 }
 
 export interface IPopularProducts {

@@ -54,12 +54,11 @@ body {
   padding: 0 1.5rem;
 }
 
-.Full-card{}
 
 .card {
   background-color: var(--bg-secondary);
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 1rem;
   margin: 25px;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
