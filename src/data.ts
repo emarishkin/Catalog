@@ -7,9 +7,9 @@ import {
 import KrishkaImg from '../src/public/PROKLADKA.jpg'
 import Proka from '../src/public/CRISHKA.jpg'
 
-import ZAPCHASTI from '../src/public/ZAPCHASTI.jpg'
-import VIXLOP from '../src/public/VIXLOP.jpg'
-import PROKA from '../src/public/PROKA.jpg'
+import ZAPCHASTI from './public/ZAPCHASTI.jpg'
+import VIXLOP from './public/VIXLOP.jpg'
+import PROKA from './public/PROKA.jpg'
 
 export const categories: ICardCategory[] = [
   { id: 1, name: 'Автозапчасти', icon: faCar, image:ZAPCHASTI},
