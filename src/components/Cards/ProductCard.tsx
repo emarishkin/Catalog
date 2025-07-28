@@ -2,7 +2,7 @@ import type { FC } from "react";
 import type { IPopularProducts } from "../../types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faRubleSign } from '@fortawesome/free-solid-svg-icons';
-import '/СайтКаталог/Magazin/src/styles/ProductCard.css'
+import '../../styles/ProductCard.css'
 
 interface ProductCardProps {
     product: IPopularProducts

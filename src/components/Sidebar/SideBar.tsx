@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { NavLink } from "react-router-dom";
-import '/СайтКаталог/Magazin/src/styles/SideBar.css'
+import '../../styles/SideBar.css'
 import { CategoryCard } from "../Cards/CategoryCard";
 import { categories } from "../../data";
 
