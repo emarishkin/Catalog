@@ -174,7 +174,7 @@
   .poster {
     padding: 25px 20px;
     text-align: center;
-    width: calc(100% - 20px);
+    width: calc(100%);
     min-height: auto;
   }
   

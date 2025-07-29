@@ -21,10 +21,10 @@ export const Footer: FC = () => {
           </div>
 
           <div className="socials">
-            <a href="#" className="icon">
+            <a href="https://t.me/mirzap63" className="icon">
               <img src={telegramIcon} alt="Telegram" />
             </a>
-            <a href="#" className="icon">
+            <a href="https://vk.com/mirzap63" className="icon">
               <img src={vkIcon} alt="VK" />
             </a>
             <a href="#" className="icon">
