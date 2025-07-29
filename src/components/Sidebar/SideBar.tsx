@@ -1,18 +1,25 @@
 import type { FC } from "react";
 import { NavLink } from "react-router-dom";
-import '../../styles/SideBar.css'
+import '../../styles/SideBar.css';
 import { CategoryCard } from "../Cards/CategoryCard";
 import { categories } from "../../data";
 
-export const SideBar:FC = () => {
+interface SideBarProps {
+    isMobileOpen?: boolean;
+}
+
+export const SideBar: FC<SideBarProps> = ({ isMobileOpen }) => {
     return (
-        <section className="sidebar">
+        <section className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
             <div className="title">Категории</div>
             <nav>
                 <ul className="menu">
-                    {categories.map(category=>(
+                    {categories.map(category => (
                         <li key={category.id}>
-                            <NavLink to={`/categories/${category.id}`}>
+                            <NavLink 
+                                to={`/categories/${category.id}`}
+                                className={({ isActive }) => isActive ? 'active' : ''}
+                            >
                                 <CategoryCard category={category} />    
                             </NavLink>
                         </li>
@@ -21,8 +28,10 @@ export const SideBar:FC = () => {
             </nav>
 
             <div className="footer-sidebar">
-                <a href='/help' target="_blank" className="link">Помощь</a>
-                <a style={{textDecoration:'underline'}} href='/terms' target="_blank" className="link">Условия && Конфиденциальность</a>
+                <a href='/help' target="_blank" rel="noopener noreferrer" className="link">Помощь</a>
+                <a href='/terms' target="_blank" rel="noopener noreferrer" className="link" style={{textDecoration:'underline'}}>
+                    Условия & Конфиденциальность
+                </a>
             </div>
         </section>
     )

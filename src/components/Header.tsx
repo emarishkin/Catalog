@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../utils/routes";
 import '../styles/Header.css';
@@ -8,11 +7,14 @@ import search from '../public/SEARCH.svg';
 import guest from '../public/GUEST.png';
 import heart from '../public/HEART.png';
 import bay from '../public/BAY.png';
-import burgerIcon from '../public/BURGER.png'; // Добавьте свою иконку бургера
+import burgerIcon from '../public/BURGER.png';
 
-export const Header: FC = () => {
-    const [isMenuOpen, setMenuOpen] = useState(false);
+interface HeaderProps {
+    isMenuOpen: boolean;
+    setMenuOpen: (isOpen: boolean) => void;
+}
 
+export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
     return (
         <header className="header">
             <div className="logo">

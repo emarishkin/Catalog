@@ -1,13 +1,4 @@
-:root {
-    --bg-secondary: #2a2a2a;
-    --bg-primary: #1a1a1a;
-    --border-color: #444;
-    --text-color: #fff;
-    --text-secondary: #aaa;
-    --accent-color: #4e8cff;
-}
-
-/* Базовые стили */
+/* Header.css */
 .header {
     background-color: var(--bg-secondary);
     padding: 1rem 2rem;
@@ -141,7 +132,6 @@
     font-weight: 600;
 }
 
-/* Мобильное меню */
 .mobile-menu {
     display: none;
     background: none;
@@ -156,10 +146,9 @@
     filter: invert(1);
 }
 
-/* Адаптация для мобильных устройств */
 @media (max-width: 768px) {
     .header {
-        padding: 0.75rem 2rem;
+        padding: 0.75rem 1rem;
         flex-wrap: wrap;
     }
 
@@ -173,7 +162,7 @@
         background: none;
         border: none;
         padding: 0.5rem;
-        margin: 0; /* Убираем возможные margin */
+        margin: 0;
         -webkit-tap-highlight-color: transparent;
         outline: none;
     }
@@ -211,7 +200,6 @@
     }
 }
 
-/* Очень маленькие экраны */
 @media (max-width: 480px) {
     .logo-img {
         width: 70px;
