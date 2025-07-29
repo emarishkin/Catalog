@@ -5,6 +5,7 @@ import { HomePage } from "../Pages/HomePage";
 import { Header } from "../components/Header";
 import { SideBar } from "../components/Sidebar/SideBar";
 import { Footer } from "../components/Footer";
+import { ProductsPages } from "../Pages/ProductsPages";
 
 export const AppRoutes: FC = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
@@ -43,6 +44,7 @@ export const AppRoutes: FC = () => {
                     <Routes>
                         <Route index element={<HomePage />} />
                         <Route path="/card" element={<div>Cart Page</div>} />
+                        <Route path="/categories/:id" element={<ProductsPages />} />
                     </Routes>
                 </div>
             </div>

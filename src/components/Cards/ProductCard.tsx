@@ -1,11 +1,11 @@
 import type { FC } from "react";
-import type { IPopularProducts } from "../../types";
+import type { IProductBase } from "../../types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faRubleSign } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/ProductCard.css'
 
 interface ProductCardProps {
-    product: IPopularProducts
+    product: IProductBase
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
@@ -16,12 +16,14 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
             </div>
             <div className="product-info">
                 <h3 className="product-name">{product.name}</h3>
-                <p className="product-category">{product.category}</p>
+                <p className="product-description">{product.description}</p>
                 <div className="product-footer">
-                    <div className="product-rating">
-                        <FontAwesomeIcon icon={faStar} className="rating-icon" />
-                        <span>{product.rating}</span>
-                    </div>
+                    {product.rating && (
+                        <div className="product-rating">
+                            <FontAwesomeIcon icon={faStar} className="rating-icon" />
+                            <span>{product.rating}</span>
+                        </div>
+                    )}
                     <div className="product-price">
                         <span>{product.price}</span>
                         <FontAwesomeIcon icon={faRubleSign} className="price-icon" />
