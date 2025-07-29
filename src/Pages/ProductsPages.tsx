@@ -4,9 +4,11 @@ import { fetchApiProducts } from "../Api";
 import { ProductCard } from "../components/Cards/ProductCard";
 import { NavLink } from "react-router-dom";
 
-interface ProductsPagesProps {}
+interface ProductsPagesProps {
+    selectedCategory?: number | null;
+}
 
-export const ProductsPages:FC<ProductsPagesProps> = () => {
+export const ProductsPages:FC<ProductsPagesProps> = ({selectedCategory}) => {
 
   const [products,setProducts] = useState<IProduct[]>([])
   const [loading,setLoading] = useState<boolean>(false)
@@ -17,7 +19,7 @@ export const ProductsPages:FC<ProductsPagesProps> = () => {
       try{
         setLoading(true)
         const productsArr = await fetchApiProducts() as IProduct[] 
-        setProducts(productsArr.filter(product => product.category && product.category.id && product.category.name))
+        setProducts(productsArr.filter(p => p.category.id === selectedCategory))
       } catch (err) {
         setError("Failed to load products");
         console.error("Error loading products:", err);
@@ -27,7 +29,7 @@ export const ProductsPages:FC<ProductsPagesProps> = () => {
       }
     }
     preload()
-  },[])
+  },[selectedCategory])
 
   if (loading) return <div className="loading">Loading products...</div>;
   if (error) return <div className="error">{error}</div>;

@@ -16,7 +16,11 @@ interface HeaderProps {
 
 export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
     const toggleMenu = () => {
-        setMenuOpen(prev=>!prev);
+        setMenuOpen(prev => !prev);
+    };
+
+    const closeMenu = () => {
+        setMenuOpen(false);
     };
 
     return (
@@ -36,13 +40,21 @@ export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
                 <img src={burgerIcon} alt="Меню" />
             </button>
 
+            {/* Добавляем оверлей */}
+            {isMenuOpen && (
+                <div 
+                    className="mobile-overlay"
+                    onClick={closeMenu}
+                />
+            )}
+
             <div className={`header-content ${isMenuOpen ? 'mobile-open' : ''}`}>
                 <div className="user">
                     <img src={guest} alt="user" className="user-avatar" />
                     <span>Guest</span>
                 </div>
 
-                <form className="search-form">
+                <form className="search-form" onClick={e => e.stopPropagation()}>
                     <img src={search} alt="search" className="search-icon" />
                     <input
                         name="search"
@@ -57,11 +69,19 @@ export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
             
             <div className="account-actions">
                 <div className="account">
-                    <Link to={ROUTES.HOME} className="favourites">
+                    <Link 
+                        to={ROUTES.HOME} 
+                        className="favourites"
+                        onClick={closeMenu}
+                    >
                         <img src={heart} alt="избранное" className="account-icon" />
                     </Link>
 
-                    <Link to={ROUTES.CARD} className="cart">
+                    <Link 
+                        to={ROUTES.CARD} 
+                        className="cart"
+                        onClick={closeMenu}
+                    >
                         <img src={bay} alt="корзина" className="account-icon" />
                         <span className="count">2</span>
                     </Link>

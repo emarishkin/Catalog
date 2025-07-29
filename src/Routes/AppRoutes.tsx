@@ -10,6 +10,7 @@ import { ProductsPages } from "../Pages/ProductsPages";
 export const AppRoutes: FC = () => {
     const [isSidebarOpen, setSidebarOpen] = useState(false);
     const sidebarRef = useRef<HTMLDivElement>(null);
+     const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
 
     useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -38,13 +39,13 @@ export const AppRoutes: FC = () => {
             />
             <div className="main-content">
                 <div ref={sidebarRef}>
-                    <SideBar isMobileOpen={isSidebarOpen} />
+                    <SideBar onSelectCategory={setSelectedCategory} isMobileOpen={isSidebarOpen} />
                 </div>
                 <div className="content">
                     <Routes>
                         <Route index element={<HomePage />} />
                         <Route path="/card" element={<div>Cart Page</div>} />
-                        <Route path="/categories/:id" element={<ProductsPages />} />
+                        <Route path="/categories/:id" element={<ProductsPages selectedCategory={selectedCategory} />} />
                     </Routes>
                 </div>
             </div>
