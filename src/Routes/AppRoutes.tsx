@@ -11,23 +11,30 @@ export const AppRoutes: FC = () => {
     const sidebarRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (sidebarRef.current && 
-                !sidebarRef.current.contains(event.target as Node) &&
-                window.innerWidth <= 768) {
-                setSidebarOpen(false);
-            }
-        };
+    const handleClickOutside = (event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        
+        if (target.closest('.mobile-menu')) return;
+  
+        if (target.closest('.sidebar')) return;
 
-        document.addEventListener('mousedown', handleClickOutside);
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
-        };
+        if (window.innerWidth <= 768) {
+            setSidebarOpen(false);
+        }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+    };
     }, []);
 
     return (
         <>
-            <Header isMenuOpen={isSidebarOpen} setMenuOpen={setSidebarOpen} />
+            <Header 
+                isMenuOpen={isSidebarOpen} 
+                setMenuOpen={setSidebarOpen} 
+            />
             <div className="main-content">
                 <div ref={sidebarRef}>
                     <SideBar isMobileOpen={isSidebarOpen} />

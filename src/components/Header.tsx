@@ -11,10 +11,14 @@ import burgerIcon from '../public/BURGER.png';
 
 interface HeaderProps {
     isMenuOpen: boolean;
-    setMenuOpen: (isOpen: boolean) => void;
+    setMenuOpen: (isOpen: boolean | ((prev: boolean) => boolean)) => void;
 }
 
 export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
+    const toggleMenu = () => {
+        setMenuOpen(prev=>!prev);
+    };
+
     return (
         <header className="header">
             <div className="logo">
@@ -25,8 +29,9 @@ export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
 
             <button 
                 className="mobile-menu" 
-                onClick={() => setMenuOpen(!isMenuOpen)}
+                onClick={toggleMenu}
                 aria-label="Меню"
+                aria-expanded={isMenuOpen}
             >
                 <img src={burgerIcon} alt="Меню" />
             </button>

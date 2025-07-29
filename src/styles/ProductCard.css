@@ -1,59 +1,64 @@
-/* ProductCard.css */
 .product-card {
     background: rgba(0, 0, 0, 0.35);
-    border-radius: 12px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    height: 400px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    height: 380px; /* Увеличил высоту */
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .product-image-container {
-    height: 250px;
+    height: 220px; 
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #f8f9fa;
+    padding: 10px;
 }
 
 .product-image {
     max-height: 100%;
     max-width: 100%;
     object-fit: contain;
-    transition: transform 0.5s ease;
+    transition: transform 0.3s ease;
 }
 
 .product-card:hover .product-image {
-    transform: scale(1.05);
+    transform: scale(1.03);
 }
 
 .product-info {
-    padding: 16px;
+    padding: 12px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
 
 .product-name {
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    margin: 0 0 8px 0;
+    margin: 0 0 6px 0;
     color: #ffffffc7;
-    line-height: 1.3;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 2.4em;
 }
 
 .product-category {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     color: #7f8c8d;
-    margin: 0 0 12px 0;
+    margin: 0 0 8px 0;
 }
 
 .product-footer {
@@ -68,11 +73,12 @@
     align-items: center;
     color: #f39c12;
     font-weight: 600;
+    font-size: 0.8rem;
 }
 
 .rating-icon {
-    margin-right: 4px;
-    font-size: 0.9rem;
+    margin-right: 3px;
+    font-size: 0.8rem;
 }
 
 .product-price {
@@ -80,25 +86,73 @@
     align-items: center;
     font-weight: 700;
     color: #6d0e90;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
 }
 
 .price-icon {
-    margin-left: 4px;
-    font-size: 0.9rem;
+    margin-left: 3px;
+    font-size: 0.8rem;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 1024px) {
+    .product-card {
+        height: 260px;
+    }
+    
+    .product-image-container {
+        height: 130px;
+    }
 }
 
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
+    .product-card {
+        height: 240px;
+    }
+    
     .product-image-container {
-        height: 140px;
+        height: 110px;
+        padding: 8px;
     }
     
     .product-info {
-        padding: 12px;
+        padding: 10px;
     }
     
     .product-name {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-card {
+        height: 220px;
+    }
+    
+    .product-image-container {
+        height: 100px;
+    }
+    
+    .product-name {
+        font-size: 0.8rem;
+    }
+    
+    .product-price {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .product-card {
+        height: 200px;
+    }
+    
+    .product-image-container {
+        height: 90px;
+    }
+    
+    .product-info {
+        padding: 8px;
     }
 }

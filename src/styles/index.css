@@ -24,6 +24,7 @@ body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.5;
   min-height: 100vh;
+  overflow-x: hidden; /* Добавлено */
 }
 
 #root {
@@ -42,11 +43,16 @@ body {
   display: flex;
   flex: 1;
   position: relative;
+  width: 100%; /* Добавлено */
 }
 
 .content {
   flex: 1;
   padding: 1rem;
+  width: 100%;
+  max-width: calc(100% - 330px); /* Учитываем ширину сайдбара */
+  box-sizing: border-box;
+  transition: all 0.3s ease; /* Добавлено */
 }
 
 .container {
@@ -60,9 +66,50 @@ body {
   background-color: var(--bg-secondary);
   border-radius: 20px;
   padding: 1rem;
-  margin: 1rem 0;
+  margin: 25px;
   border: 1px solid var(--border-color);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: #4f46e5;
+}
+
+input, textarea {
+  background-color: var(--bg-secondary);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 330px;
+  background-color: var(--sidebar-color);
+  padding: 1.5rem;
+  border-right: 1px solid var(--border-color);
+  transition: transform 0.3s ease; /* Добавлено */
+}
+
+/* Footer styles */
+.footer {
+  background-color: var(--bg-secondary);
+  padding: 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
 }
 
 /* Utility classes */
@@ -91,16 +138,50 @@ body {
   display: none;
 }
 
-@media (max-width: 768px) {
+/* Мобильная адаптация */
+@media (max-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    max-width: 330px;
+    height: 100vh;
+    z-index: 90;
+    margin: 0;
+    transition: left 0.3s ease;
+  }
+
+  .sidebar.mobile-open {
+    left: 0;
+  }
+
+  .content {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
   .mobile-overlay.mobile-open {
     display: block;
   }
-  
+
+  .card {
+    margin: 1rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
   .content {
     padding: 0.5rem;
   }
-  
-  .card {
-    margin: 0.5rem 0;
+
+  .sidebar {
+    max-width: 280px;
   }
 }
