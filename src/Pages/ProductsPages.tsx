@@ -3,6 +3,7 @@ import type { IProduct } from "../types";
 import { fetchApiProducts } from "../Api";
 import { ProductCard } from "../components/Cards/ProductCard";
 import { NavLink } from "react-router-dom";
+import { Card, Skeleton } from "antd";
 
 interface ProductsPagesProps {
     selectedCategory?: number | null;
@@ -30,15 +31,30 @@ export const ProductsPages:FC<ProductsPagesProps> = ({selectedCategory}) => {
     }
     preload()
   },[selectedCategory])
-
-  if (loading) return <div className="loading">Loading products...</div>;
+  
+  if (loading) return (
+    <div style={{ 
+      display: 'flex',
+      gap: '16px',
+      flexWrap: 'wrap'
+    }}>
+      {[...Array(5)].map((_, index) => (
+        <Card 
+          key={`skeleton-${index}`} 
+          style={{ width: 215, height: 380 ,marginTop:25 }}
+        >
+          <Skeleton active style={{marginBottom:10}} />
+          <Skeleton active />
+        </Card>
+      ))}
+    </div>
+  )
   if (error) return <div className="error">{error}</div>;
   if (products.length === 0) return <div>No products found</div>;
 
   return (
     <section className="products-page">
       <section className="products-page">
-      <h1>Products List</h1>
       <div className="products-grid">
         {products.map(product => (
             <NavLink 
