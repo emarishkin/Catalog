@@ -1,14 +1,19 @@
-import type { FC } from "react";
+import {  type FC } from "react";
 import type { IProductBase } from "../../types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faRubleSign } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/ProductCard.css'
+import { useBasket } from "../../context/BasketContext";
+
 
 interface ProductCardProps {
     product: IProductBase
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
+
+    const { addToBasket } = useBasket()
+
     return (
         <div className="product-card">
             <div className="product-image-container">
@@ -28,6 +33,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
                         <span>{product.price}</span>
                         <FontAwesomeIcon icon={faRubleSign} className="price-icon" />
                     </div>
+                    <button onClick={()=>addToBasket(product)}>Корзина</button>
                 </div>
             </div>
         </div>

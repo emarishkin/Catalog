@@ -28,34 +28,36 @@ export const popularProducts:IPopularProducts[] = [
 
 export const products:IProduct[] = [
   {
-    "id": 1,
-    "name": "Handmade Fresh Table",
-    "slug": "handmade-fresh-table",
-    "price": 687,
-    "description": "Andy shoes are designed to keeping in...",
-    "image": "https://placehold.co/600x400",
-    "category": {
-      "id": 1,
-      "name": "Others",
-      "image": "https://placehold.co/600x400",
+    id: 1,
+    name: "Handmade Fresh Table",
+    slug: "handmade-fresh-table",
+    price: 687,
+    description: "Andy shoes are designed to keeping in...",
+    image: "https://placehold.co/600x400",
+    rating:2.7,
+    category: {
+      id: 1,
+      name: "Others",
+      image: "https://placehold.co/600x400",
     },
-    "images": [
+    images: [
       "https://placehold.co/600x400",
       "https://placehold.co/600x400",
       "https://placehold.co/600x400"
     ]
   },
   {
-    "id": 2,
-    "name": "Smartwatch",
-    "slug": "smartwatch",
-    "price": 139,
-    "description": "Stylish smartwatch with heart rate monitor, GPS, and message notifications.",
-    "image": "https://placehold.co/600x400",
-    "category": {
-      "id": 2,
-      "name": "Sports & Recreation",
-      "image": "https://placeimg.com/640/480/any",
+    id: 2,
+    name: "Smartwatch",
+    slug: "smartwatch",
+    price: 139,
+    description: "Stylish smartwatch with heart rate monitor, GPS, and message notifications.",
+    image: "https://placehold.co/600x400",
+    rating:2.7,
+    category: {
+      id: 2,
+      name: "Sports & Recreation",
+      image: "https://placeimg.com/640/480/any",
     },
     "images": [
       "https://img.freepik.com/vecteurs-libre/montre-intelligente-image-realiste-noir_1284-11873.jpg?semt=ais_hybrid&w=740&q=80"

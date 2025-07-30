@@ -77,7 +77,7 @@ export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
                     </Link>
 
                     <Link 
-                        to={ROUTES.CARD} 
+                        to={ROUTES.BASKET} 
                         className="cart"
                         onClick={closeMenu}
                     >
