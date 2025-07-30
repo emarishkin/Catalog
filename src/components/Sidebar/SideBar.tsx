@@ -7,9 +7,22 @@ import { categories } from "../../data";
 interface SideBarProps {
     isMobileOpen?: boolean;
     onSelectCategory?: (id: number) => void;
+    closeSidebar: () => void; 
 }
 
-export const SideBar: FC<SideBarProps> = ({ isMobileOpen,onSelectCategory }) => {
+export const SideBar: FC<SideBarProps> = ({ 
+    isMobileOpen, 
+    onSelectCategory, 
+    closeSidebar 
+}) => {
+    const handleCategoryClick = (categoryId: number) => {
+        onSelectCategory?.(categoryId);
+
+        if (window.innerWidth <= 768) {
+            closeSidebar?.();
+        }
+    };
+
     return (
         <section className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
             <div className="title">Категории</div>
@@ -19,7 +32,7 @@ export const SideBar: FC<SideBarProps> = ({ isMobileOpen,onSelectCategory }) => 
                         <li key={category.id}>
                             <NavLink 
                                 to={`/categories/${category.id}`}
-                                onClick={() => onSelectCategory?.(category.id)}
+                                onClick={() => handleCategoryClick(category.id)}
                                 className={({ isActive }) => isActive ? 'active' : ''}
                             >
                                 <CategoryCard category={category} />    

@@ -40,7 +40,6 @@ export const Header: FC<HeaderProps> = ({ isMenuOpen, setMenuOpen }) => {
                 <img src={burgerIcon} alt="Меню" />
             </button>
 
-            {/* Добавляем оверлей */}
             {isMenuOpen && (
                 <div 
                     className="mobile-overlay"

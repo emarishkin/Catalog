@@ -39,7 +39,7 @@ export const AppRoutes: FC = () => {
             />
             <div className="main-content">
                 <div ref={sidebarRef}>
-                    <SideBar onSelectCategory={setSelectedCategory} isMobileOpen={isSidebarOpen} />
+                    <SideBar closeSidebar={()=>setSidebarOpen(false)} onSelectCategory={setSelectedCategory} isMobileOpen={isSidebarOpen} />
                 </div>
                 <div className="content">
                     <Routes>
