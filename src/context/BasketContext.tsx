@@ -1,32 +1,89 @@
 import { createContext, useContext, useState, type FC, type ReactNode } from "react";
 import type { IProductBase } from "../types";
 
-interface BasketContextType {
-    basketItems:IProductBase[]
-    addToBasket:(product:IProductBase) => void
-    removeBasket:(productID:number) => void
+interface BasketItem {
+    productId: number;
+    quantity: number;
 }
 
-const BasketContext = createContext<BasketContextType | undefined>(undefined)
+interface BasketContextType {
+    basketItems: BasketItem[];
+    addToBasket: (productId: number) => void;
+    removeBasket: (productId: number) => void;
+    increaseQuantity: (productId: number) => void;
+    decreaseQuantity: (productId: number) => void;
+    getTotalItems: () => number;
+    getTotalPrice: (products: IProductBase[]) => number;
+}
 
-export const BasketProvider:FC<{children:ReactNode}> = ({children}) => {
+const BasketContext = createContext<BasketContextType | undefined>(undefined);
 
-    const [basketItems,setBasketItems] = useState<IProductBase[]>([])
+export const BasketProvider: FC<{children: ReactNode}> = ({children}) => {
+    const [basketItems, setBasketItems] = useState<BasketItem[]>([]);
 
-    const addToBasket = (product:IProductBase) => {
-        setBasketItems(prevItem => [...prevItem,product])
+    const addToBasket = (productId: number) => {
+        setBasketItems(prev => {
+            const existingItem = prev.find(item => item.productId === productId);
+            if (existingItem) {
+                return prev.map(item => 
+                    item.productId === productId 
+                        ? {...item, quantity: item.quantity + 1} 
+                        : item
+                );
+            }
+            return [...prev, {productId, quantity: 1}];
+        });
     }
 
-    const removeBasket = (productID:number) => {
-        setBasketItems(prevItem => prevItem.filter(item => item.id !== productID))
+    const removeBasket = (productId: number) => {
+        setBasketItems(prev => prev.filter(item => item.productId !== productId));
+    }
+
+    const increaseQuantity = (productId: number) => {
+        setBasketItems(prev => 
+            prev.map(item => 
+                item.productId === productId 
+                    ? {...item, quantity: item.quantity + 1} 
+                    : item
+            )
+        );
+    }
+
+    const decreaseQuantity = (productId: number) => {
+        setBasketItems(prev => 
+            prev.map(item => 
+                item.productId === productId && item.quantity > 1
+                    ? {...item, quantity: item.quantity - 1} 
+                    : item
+            ).filter(item => item.quantity > 0)
+        );
+    }
+
+    const getTotalItems = () => {
+        return basketItems.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    const getTotalPrice = (products: IProductBase[]) => {
+        return basketItems.reduce((total, basketItem) => {
+            const product = products.find(p => p.id === basketItem.productId);
+            return product ? total + (product.price * basketItem.quantity) : total;
+        }, 0);
     }
 
     return (
-        <BasketContext.Provider value={{basketItems,addToBasket,removeBasket}}>
+        <BasketContext.Provider value={{
+            basketItems,
+            addToBasket,
+            removeBasket,
+            increaseQuantity,
+            decreaseQuantity,
+            getTotalItems,
+            getTotalPrice
+        }}>
             {children}
         </BasketContext.Provider>
-    )
-}
+    );
+};
 
 export const useBasket = () => {
     const context = useContext(BasketContext);
@@ -35,3 +92,4 @@ export const useBasket = () => {
     }
     return context;
 };
+

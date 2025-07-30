@@ -6,7 +6,6 @@ import { Header } from "../components/Header";
 import { SideBar } from "../components/Sidebar/SideBar";
 import { Footer } from "../components/Footer";
 import { ProductsPages } from "../Pages/ProductsPages";
-import { BasketProvider } from "../context/BasketContext";
 import { BasketPage } from "../Pages/BasketPage";
 
 export const AppRoutes: FC = () => {
@@ -35,7 +34,6 @@ export const AppRoutes: FC = () => {
 
     return (
         <>
-        <BasketProvider>
             <Header 
                 isMenuOpen={isSidebarOpen} 
                 setMenuOpen={setSidebarOpen} 
@@ -54,7 +52,6 @@ export const AppRoutes: FC = () => {
                 </div>
             </div>
             <Footer />
-        </BasketProvider>
         </>
     )
 }

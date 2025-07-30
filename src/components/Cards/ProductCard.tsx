@@ -1,18 +1,22 @@
-import {  type FC } from "react";
+import { type FC } from "react";
 import type { IProductBase } from "../../types";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faRubleSign } from '@fortawesome/free-solid-svg-icons';
-import '../../styles/ProductCard.css'
+import '../../styles/ProductCard.css';
 import { useBasket } from "../../context/BasketContext";
 
-
 interface ProductCardProps {
-    product: IProductBase
+    product: IProductBase;
 }
 
 export const ProductCard: FC<ProductCardProps> = ({ product }) => {
+    const { addToBasket } = useBasket();
 
-    const { addToBasket } = useBasket()
+    const handleAddToBasket = (e: React.MouseEvent<HTMLButtonElement>) => {
+        e.preventDefault(); 
+        e.stopPropagation();
+        addToBasket(product.id);
+    };
 
     return (
         <div className="product-card">
@@ -33,9 +37,14 @@ export const ProductCard: FC<ProductCardProps> = ({ product }) => {
                         <span>{product.price}</span>
                         <FontAwesomeIcon icon={faRubleSign} className="price-icon" />
                     </div>
-                    <button onClick={()=>addToBasket(product)}>Корзина</button>
+                    <button 
+                        onClick={handleAddToBasket}
+                        className="add-to-basket-btn"
+                    >
+                        Корзина
+                    </button>
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
